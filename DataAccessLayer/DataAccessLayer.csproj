@@ -67,6 +67,18 @@
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
+    <Compile Include="Migrations\202502181222302_writerAboutAdded.cs" />
+    <Compile Include="Migrations\202502181222302_writerAboutAdded.Designer.cs">
+      <DependentUpon>202502181222302_writerAboutAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502181305254_writerTitleAdd.cs" />
+    <Compile Include="Migrations\202502181305254_writerTitleAdd.Designer.cs">
+      <DependentUpon>202502181305254_writerTitleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502181434427_writerSizeChanged.cs" />
+    <Compile Include="Migrations\202502181434427_writerSizeChanged.Designer.cs">
+      <DependentUpon>202502181434427_writerSizeChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +91,17 @@
       <Project>{1c5613c1-ee16-4c04-9173-219e2449b339}</Project>
       <Name>EntityLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202502181222302_writerAboutAdded.resx">
+      <DependentUpon>202502181222302_writerAboutAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502181305254_writerTitleAdd.resx">
+      <DependentUpon>202502181305254_writerTitleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502181434427_writerSizeChanged.resx">
+      <DependentUpon>202502181434427_writerSizeChanged.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
