@@ -4,7 +4,13 @@
     ViewBag.Title = "Başlık Listesi";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@{ string color = ""; }
+@{
+    string color = "";
+    string statusColor = "";
+    string status = "";
+    string deleteButtonText = "";
+    string deleteButtonColor = "";
+}
 
 <!DOCTYPE html>
 <html>
@@ -38,7 +44,7 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 1%">
+                            <th style="width: 2%">
                                 #
                             </th>
                             <th style="width: 20%">
@@ -47,10 +53,14 @@
                             <th style="width: 30%">
                                 Oluşturan Yazar
                             </th>
+                            <th style="width: 10%">
+                                Durum
+                            </th>
                             <th style="width: 8%" class="text-center">
                                 Kategori
                             </th>
-                            <th style="width: 20%">
+                            <th style="width: 30%">
+                                İşlemler
                             </th>
                         </tr>
                     </thead>
@@ -60,54 +70,78 @@
                             if (item.Category.CategoryName == "Kitap")
                             { color = "badge badge-warning"; }
                             else if (item.Category.CategoryName == "Dizi")
-                            { color = "badge badge-success"; }
+                            { color = "badge badge-primary"; }
                             else if (item.Category.CategoryName == "Yazılım")
                             { color = "badge badge-info"; }
                             else if (item.Category.CategoryName == "Seyahat")
-                            { color = "badge badge-secondary"; }
+                            { color = "badge badge-dark"; }
                             else
-                            { color = "badge badge-primary"; }
-                        <tr>
-                            <td>
-                                @item.HeadingId
-                            </td>
-                            <td>
-                                <a>
-                                    @item.HeadingName
-                                </a>
-                                <br />
-                                <small>
-                                    @(((DateTime)item.HeadingDate).ToString("dd.MM.yyyy"))
-                                </small>
-                            </td>
-                            <td>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                                        <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage">
-                                    </li>
-                                </ul>
-                            </td>
-                            <td class="project-state">
-                                <span class="@color">@item.Category.CategoryName</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="#">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    Yazılar
-                                </a>
-                                <a class="btn btn-info btn-sm" href="/Heading/UpdateHeading/">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Düzenle
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Sil
-                                </a>
-                            </td>
-                        </tr>
+                            { color = "badge badge-secondary"; }
+                            <tr>
+                                <td>
+                                    @item.HeadingId
+                                </td>
+                                <td>
+                                    <a>
+                                        @item.HeadingName
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @(((DateTime)item.HeadingDate).ToString("dd.MM.yyyy"))
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    @{
+                                        switch (item.Status)
+                                        {
+                                            case true:
+                                                status = "Aktif";
+                                                statusColor = "badge badge-success";
+                                                deleteButtonText = "Pasif Yap";
+                                                deleteButtonColor = "btn btn-danger btn-sm";
+                                                break;
+
+                                            case false:
+                                                status = "Pasif";
+                                                statusColor = "badge badge-danger";
+                                                deleteButtonText = "Aktif Yap";
+                                                deleteButtonColor = "btn btn-success btn-sm";
+                                                break;
+                                        }
+                                    }
+                                    <span class="@statusColor">@status</span>
+                                </td>
+                                <td class="project-state">
+                                    <span class="@color">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm"
+                                       href="/Content/ContentByHeading/@item.HeadingId">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Yazılar
+                                    </a>
+                                    <a class="btn btn-info btn-sm"
+                                       href="/Heading/UpdateHeading/@item.HeadingId">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a class="@deleteButtonColor"
+                                       href="/Heading/DeleteHeading/@item.HeadingId">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        @deleteButtonText
+                                    </a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -118,3 +152,4 @@
     </section>
 </body>
 </html>
+<a href="/Heading/AddHeading" class="btn btn-primary">Yeni Başlık Ekle</a>

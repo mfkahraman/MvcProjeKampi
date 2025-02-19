@@ -24,22 +24,8 @@ namespace MvcProjeKampi.Controllers
         public ActionResult AddHeading()
         {
             //Categories Dropdown List
-            List<SelectListItem> categories = (from x in cm.GetList()
-                                               select new SelectListItem
-                                               {
-                                                   Text = x.CategoryName,
-                                                   Value = x.CategoryId.ToString()
-                                               }).ToList();
-            ViewBag.Categories = categories;
-
-            //Writers Dropdown List
-            List<SelectListItem> writers = (from x in wm.GetList()
-                                               select new SelectListItem
-                                               {
-                                                   Text = x.WriterName + " " + x.WriterSurname,
-                                                   Value = x.WriterId.ToString()
-                                               }).ToList();
-            ViewBag.Writers = writers;
+            ViewBag.Categories = GetCategories();
+            ViewBag.Writers = GetWriters();
 
             return View();
         }
@@ -49,6 +35,52 @@ namespace MvcProjeKampi.Controllers
         {
             model.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             hm.AddHeadingBL(model);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult UpdateHeading(int id)
+        {
+            ViewBag.Categories = GetCategories();
+            ViewBag.Writers = GetWriters();
+            var value = hm.GetById(id);
+            return View(value);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateHeading(Heading model)
+        {
+            hm.UpdateHeading(model);
+            return RedirectToAction("Index");
+        }
+
+        private List<SelectListItem> GetWriters()
+        {
+
+            //Writers Dropdown List
+            return (from x in wm.GetList()
+                    select new SelectListItem
+                    {
+                        Text = x.WriterName + " " + x.WriterSurname,
+                        Value = x.WriterId.ToString()
+                    }).ToList();
+        }
+
+        private List<SelectListItem> GetCategories()
+        {
+            return (from x in cm.GetList()
+                    select new SelectListItem
+                    {
+                        Text = x.CategoryName,
+                        Value = x.CategoryId.ToString()
+                    }).ToList();
+        }
+
+        public ActionResult DeleteHeading(int id)
+        {
+            var value = hm.GetById(id);
+            value.Status = false;
+            hm.DeleteHeadingBL(value);
             return RedirectToAction("Index");
         }
     }

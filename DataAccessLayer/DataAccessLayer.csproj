@@ -79,6 +79,18 @@
     <Compile Include="Migrations\202502181434427_writerSizeChanged.Designer.cs">
       <DependentUpon>202502181434427_writerSizeChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502190944471_writerStatusAdded.cs" />
+    <Compile Include="Migrations\202502190944471_writerStatusAdded.Designer.cs">
+      <DependentUpon>202502190944471_writerStatusAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502191146105_contentStatusAdded.cs" />
+    <Compile Include="Migrations\202502191146105_contentStatusAdded.Designer.cs">
+      <DependentUpon>202502191146105_contentStatusAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202502191149081_statusAdded.cs" />
+    <Compile Include="Migrations\202502191149081_statusAdded.Designer.cs">
+      <DependentUpon>202502191149081_statusAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -101,6 +113,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502181434427_writerSizeChanged.resx">
       <DependentUpon>202502181434427_writerSizeChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502190944471_writerStatusAdded.resx">
+      <DependentUpon>202502190944471_writerStatusAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502191146105_contentStatusAdded.resx">
+      <DependentUpon>202502191146105_contentStatusAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502191149081_statusAdded.resx">
+      <DependentUpon>202502191149081_statusAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
