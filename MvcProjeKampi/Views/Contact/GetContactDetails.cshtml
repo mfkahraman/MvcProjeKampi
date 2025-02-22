@@ -10,16 +10,25 @@
 
 <body class="hold-transition sidebar-mini">
     <!-- Content Header (Page header) -->
-    <!-- Main content -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>İletişim Sayfası Mesajları</h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                @Html.Action("ContactSideBar", "Contact")
+                @Html.Action("MessageListMenu", "Contact")
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">Mesaji Oku</h3>
+                            <h3 class="card-title">Mesaj Detayları</h3>
                             <div class="card-tools">
                                 <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Önceki"><i class="fas fa-chevron-left"></i></a>
                                 <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Sonraki"><i class="fas fa-chevron-right"></i></a>
@@ -29,11 +38,13 @@
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <div class="mailbox-read-info">
-                                <h5><b>@Model.Subject</b></h5>
+                                <h5><b>Konu: </b>@Model.Subject</h5>
                                 <br />
                                 <h6>
-                                    Mail: @Model.UserMail
-                                    <span class="mailbox-read-time float-right">15 Feb. 2015 11:03 PM</span>
+                                    <b>Gönderen: </b> @Model.UserMail
+                                    <span class="mailbox-read-time float-right">
+                                        <b>Tarih: </b>@(((DateTime)Model.ContactDate).ToString("dd-MMM-yyyy"))
+                                    </span>
                                 </h6>
                             </div>
                             <!-- /.mailbox-read-info -->

@@ -25,7 +25,7 @@ namespace MvcProjeKampi.Controllers
             return View(value);
         }
 
-        public PartialViewResult ContactSideBar()
+        public PartialViewResult MessageListMenu()
         {
             return PartialView();
         }
