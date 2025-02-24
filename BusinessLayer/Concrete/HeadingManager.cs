@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _headingDal.List();
         }
 
+        public List<Heading> GetListByWriter(int id)
+        {
+           return _headingDal.List(x => x.WriterId == id);
+        }
+
         public void UpdateHeading(Heading heading)
         {
             _headingDal.Update(heading);
