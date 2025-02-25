@@ -72,6 +72,12 @@ namespace MvcProjeKampi.Controllers
             return RedirectToAction("MyHeading");
         }
 
+        public ActionResult AllHeading()
+        {
+            var values = headingManager.GetList();
+            return View(values);
+        }
+
 
         private List<SelectListItem> GetCategories()
         {
