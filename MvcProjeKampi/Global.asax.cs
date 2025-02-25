@@ -12,6 +12,9 @@ namespace MvcProjeKampi
     {
         protected void Application_Start()
         {
+            // This line is added to make all pages require authorization
+            GlobalFilters.Filters.Add(new AuthorizeAttribute());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

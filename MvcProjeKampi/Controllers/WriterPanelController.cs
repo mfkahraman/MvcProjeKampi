@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
@@ -21,8 +22,11 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult MyHeading()
         {
-            var values = headingManager.GetListByWriter(4);
-            return View();
+            Context context = new Context();
+            string writerMail = (string)Session["WriterMail"];
+            int writerId = context.Writers.Where(x=>x.WriterMail == writerMail).Select(y=>y.WriterId).FirstOrDefault();
+            var values = headingManager.GetListByWriter(writerId);
+            return View(values);
         }
 
         [HttpGet]
@@ -35,9 +39,12 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewHeading(Heading heading)
         {
+            Context context = new Context();
+            string writerMail = (string)Session["WriterMail"];
+            int writerId = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterId).FirstOrDefault();
+            heading.WriterId = writerId;
             heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             heading.Status = true;
-            heading.WriterId = 4;
             headingManager.AddHeadingBL(heading);
             return RedirectToAction("MyHeading");
         }
@@ -54,7 +61,7 @@ namespace MvcProjeKampi.Controllers
         public ActionResult UpdateHeading(Heading model)
         {
             headingManager.UpdateHeading(model);
-            return RedirectToAction("Index");
+            return RedirectToAction("MyHeading");
         }
 
         public ActionResult DeleteHeading(int id)
@@ -62,7 +69,7 @@ namespace MvcProjeKampi.Controllers
             var value = headingManager.GetById(id);
             value.Status = false;
             headingManager.DeleteHeadingBL(value);
-            return RedirectToAction("MyHead'ng");
+            return RedirectToAction("MyHeading");
         }
 
 

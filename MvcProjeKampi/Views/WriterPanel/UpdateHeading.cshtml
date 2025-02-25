@@ -21,6 +21,8 @@
         @Html.Label("Kategori")
         @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
         <br />
+        @Html.HiddenFor(x => x.WriterId)
+        @Html.HiddenFor(x => x.HeadingDate)
         <button class="btn btn-outline-primary">Güncelle</button>
     </div>
 }

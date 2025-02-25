@@ -8,10 +8,6 @@
 
 @{
     string color = "";
-    string statusColor = "";
-    string status = "";
-    string deleteButtonText = "";
-    string deleteButtonColor = "";
 }
 
 <!DOCTYPE html>
@@ -112,11 +108,11 @@
                                         </i>
                                         Düzenle
                                     </a>
-                                    <a class="@deleteButtonColor"
-                                       href="/Heading/DeleteHeading/@item.HeadingId">
+                                    <a class="btn btn-danger btn-sm"
+                                       href="/WriterPanel/DeleteHeading/@item.HeadingId">
                                         <i class="fas fa-trash">
                                         </i>
-                                        @deleteButtonText
+                                        Sil
                                     </a>
                                 </td>
                             </tr>
