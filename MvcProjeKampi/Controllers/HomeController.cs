@@ -6,10 +6,16 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
-    public class TestController : Controller
+    [AllowAnonymous]
+    public class HomeController : Controller
     {
-        // GET: Test
+        
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult HomePage()
         {
             return View();
         }

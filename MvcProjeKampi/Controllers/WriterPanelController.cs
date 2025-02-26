@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using FluentValidation;
+using FluentValidation.Results;
+using BusinessLayer.ValidationRules;
 
 namespace MvcProjeKampi.Controllers
 {
@@ -16,15 +19,41 @@ namespace MvcProjeKampi.Controllers
     {
         HeadingManager headingManager = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
-        // GET: WriterPanel
+        WriterManager writerManager = new WriterManager(new EfWriterDal());
+        WriterValidator validationRules = new WriterValidator();
+        Context context = new Context();
+
+        [HttpGet]
         public ActionResult WriterProfile()
         {
+            string writerMail = (string)Session["WriterMail"];
+            int writerId = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterId).FirstOrDefault();
+            var writer = writerManager.GetByIdBL(writerId);
+            return View(writer);
+        }
+
+        [HttpPost]
+        public ActionResult WriterProfile(Writer writer)
+        {
+            ValidationResult validationResult = validationRules.Validate(writer);
+            if (validationResult != null)
+            {
+                writerManager.WriterUpdateBL(writer);
+                return RedirectToAction("AllHeading");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+
             return View();
         }
 
         public ActionResult MyHeading()
         {
-            Context context = new Context();
             string writerMail = (string)Session["WriterMail"];
             int writerId = context.Writers.Where(x=>x.WriterMail == writerMail).Select(y=>y.WriterId).FirstOrDefault();
             var values = headingManager.GetListByWriter(writerId);
@@ -41,7 +70,6 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult NewHeading(Heading heading)
         {
-            Context context = new Context();
             string writerMail = (string)Session["WriterMail"];
             int writerId = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterId).FirstOrDefault();
             heading.WriterId = writerId;

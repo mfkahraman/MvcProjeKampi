@@ -49,10 +49,6 @@ namespace MvcProjeKampi.Controllers
 
         }
 
-        public ActionResult ToDoList()
-        {
-            return View();
-        }
 
     }
 }
