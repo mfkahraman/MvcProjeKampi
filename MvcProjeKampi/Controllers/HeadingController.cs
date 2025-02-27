@@ -83,5 +83,11 @@ namespace MvcProjeKampi.Controllers
             hm.DeleteHeadingBL(value);
             return RedirectToAction("Index");
         }
+
+        public ActionResult HeadingReport ()
+        {
+            var headingValues = hm.GetList();
+            return View(headingValues);
+        }
     }
 }
