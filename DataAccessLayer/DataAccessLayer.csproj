@@ -112,6 +112,10 @@
     <Compile Include="Migrations\202502222150207_adminClass.Designer.cs">
       <DependentUpon>202502222150207_adminClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502281742465_headingModelUpd.cs" />
+    <Compile Include="Migrations\202502281742465_headingModelUpd.Designer.cs">
+      <DependentUpon>202502281742465_headingModelUpd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502222150207_adminClass.resx">
       <DependentUpon>202502222150207_adminClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502281742465_headingModelUpd.resx">
+      <DependentUpon>202502281742465_headingModelUpd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

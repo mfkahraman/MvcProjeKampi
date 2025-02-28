@@ -1,4 +1,6 @@
-﻿@model List<EntityLayer.Concrete.Category>
+﻿@model PagedList.IPagedList<EntityLayer.Concrete.Category>
+@using PagedList.Mvc;
+@using PagedList;
 
 @{
     ViewBag.Title = "Index";
@@ -8,22 +10,24 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>#</th>
         <th>Kategori Adı</th>
         <th>Sil</th>
         <th>Güncelle</th>
-        <th>Başlıklar</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.CategoryId</td>
             <td>@item.CategoryName</td>
             <td><a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
             <td><a href="/AdminCategory/UpdateCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
-            <td><a href="#" class="btn btn-primary">Başlıklar</a></td>
         </tr>
     }
 </table>
 <br />
 <a href="/AdminCategory/AddCategory" class="btn btn-info">Yeni Kategori Ekle</a>
+<hr />
+
+@Html.PagedListPager((IPagedList)Model, startPage => Url.Action("Index", new { startPage }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<string> { "page-link" }
+})

@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,9 @@ namespace MvcProjeKampi.Controllers
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            var values = hm.GetList();
+            var values = hm.GetList().Where(x => x.Status == true).ToPagedList(page,5);
             return View(values);
         }
 
@@ -58,7 +59,7 @@ namespace MvcProjeKampi.Controllers
         {
 
             //Writers Dropdown List
-            return (from x in wm.GetList()
+            return (from x in wm.GetList().Where(x => x.Status == true)
                     select new SelectListItem
                     {
                         Text = x.WriterName + " " + x.WriterSurname,
@@ -68,7 +69,7 @@ namespace MvcProjeKampi.Controllers
 
         private List<SelectListItem> GetCategories()
         {
-            return (from x in cm.GetList()
+            return (from x in cm.GetList().Where(x => x.CategoryStatus == true)
                     select new SelectListItem
                     {
                         Text = x.CategoryName,

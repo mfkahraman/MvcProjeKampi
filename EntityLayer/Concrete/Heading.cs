@@ -12,7 +12,7 @@ namespace EntityLayer.Concrete
         [Key]
         public int HeadingId { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string HeadingName { get; set; }
         public DateTime HeadingDate { get; set; }
         public bool Status { get; set; }

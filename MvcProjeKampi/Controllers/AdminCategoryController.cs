@@ -3,6 +3,7 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,15 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
-    
+
     public class AdminCategoryController : Controller
     {
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
-        // GET: AdminCategory
-        [Authorize(Roles= "B")]
-        public ActionResult Index()
+        CategoryValidator categoryValidator = new CategoryValidator();
+
+        public ActionResult Index(int startPage = 1)
         {
-            var values = cm.GetList();
+            var values = cm.GetList().Where(x=>x.CategoryStatus == true).ToPagedList(startPage, 5); ;
             return View(values);
         }
 
@@ -30,8 +31,8 @@ namespace MvcProjeKampi.Controllers
 
         [HttpPost]
         public ActionResult AddCategory(Category model)
-        {
-            CategoryValidator categoryValidator = new CategoryValidator();
+        {   
+            model.CategoryStatus = true;
             ValidationResult results = categoryValidator.Validate(model);
             if (results.IsValid)
             {
@@ -51,7 +52,8 @@ namespace MvcProjeKampi.Controllers
         public ActionResult DeleteCategory(int id)
         {
             var itemToDelete = cm.GetById(id);
-            cm.DeleteCategoryBL(itemToDelete);
+            itemToDelete.CategoryStatus = false;
+            cm.CategoryUpdate(itemToDelete);
             return RedirectToAction("Index");
         }
 
