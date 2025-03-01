@@ -11,17 +11,20 @@
     <tr>
         <th>ID</th>
         <th>Hakkımda Başlığı</th>
-        <th>Aktif Yap</th>
-        <th>Pasif Yap</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
     </tr>
     @foreach (var item in Model)
     {
-    <tr>
-        <th>@item.AboutId</th>
-        <th>@item.AboutDetails1</th>
-        <th><a href="#" class="btn btn-warning">Aktif Yap</a></th>
-        <th><a href="#" class="btn btn-danger">Pasif Yap</a></th>
-    </tr>
+        <tr>
+            <td>@item.AboutId</td>
+            <td>@item.AboutDetails1</td>
+            <td>@(item.Status ? "Aktif" : "Pasif")</td>
+            <td>
+                <a href="/About/Activate/@item.AboutId" class="btn btn-warning">Aktif Yap</a>
+                <a href="/About/MakePassive/@item.AboutId" class="btn btn-danger">Pasif Yap</a>
+            </td>
+        </tr>
     }
 </table>
 
@@ -29,4 +32,4 @@
     Yeni Kayıt Ekle
 </button>
 
-@Html.Action("AboutPartial","About")
+@Html.Action("AboutPartial", "About")
