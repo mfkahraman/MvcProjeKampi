@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Utilities;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
@@ -30,6 +31,7 @@ namespace BusinessLayer.Concrete
 
         public void WriterAddBL(Writer writer)
         {
+            writer.WriterPassword = PasswordHelper.HashPassword(writer.WriterPassword);
             _writerDal.Insert(writer);
         }
 
@@ -40,6 +42,7 @@ namespace BusinessLayer.Concrete
 
         public void WriterUpdateBL(Writer writer)
         {
+            writer.WriterPassword = PasswordHelper.HashPassword(writer.WriterPassword);
             _writerDal.Update(writer);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Utilities;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
@@ -20,6 +21,7 @@ namespace BusinessLayer.Concrete
 
         public void AddAdmin(Admin admin)
         {
+            admin.AdminPassword = PasswordHelper.HashPassword(admin.AdminPassword);
             _adminDal.Insert(admin);
         }
 
@@ -40,6 +42,7 @@ namespace BusinessLayer.Concrete
 
         public void UpdateAdmin(Admin admin)
         {
+            admin.AdminPassword = PasswordHelper.HashPassword(admin.AdminPassword);
             _adminDal.Update(admin);
         }
     }

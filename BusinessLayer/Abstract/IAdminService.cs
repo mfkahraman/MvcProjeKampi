@@ -14,5 +14,6 @@ namespace BusinessLayer.Abstract
         Admin GetById(int id);
         void DeleteAdmin(Admin admin);
         void UpdateAdmin(Admin admin);
+
     }
 }

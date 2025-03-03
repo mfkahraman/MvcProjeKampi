@@ -15,6 +15,7 @@ namespace MvcProjeKampi.Controllers
     public class LoginController : Controller
     {
         WriterLoginManager writerLoginManager = new WriterLoginManager(new EfWriterDal());
+        AdminLoginManager adminLoginManager = new AdminLoginManager(new EfAdminDal());
 
         // Admin Login
         [HttpGet]
@@ -26,9 +27,8 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult Index(Admin admin)
         {
-            Context context = new Context();
-            var adminUserInfo = context.Admins.FirstOrDefault
-                (x => x.AdminUserName == admin.AdminUserName && x.AdminPassword == admin.AdminPassword);
+            var adminUserInfo = adminLoginManager.GetAdmin(admin.AdminUserName, admin.AdminPassword);
+
             if (adminUserInfo != null)
             {
                 FormsAuthentication.SetAuthCookie(adminUserInfo.AdminUserName, false);

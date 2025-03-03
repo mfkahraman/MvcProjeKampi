@@ -116,6 +116,14 @@
     <Compile Include="Migrations\202502281742465_headingModelUpd.Designer.cs">
       <DependentUpon>202502281742465_headingModelUpd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202503031315402_isReadAdded.cs" />
+    <Compile Include="Migrations\202503031315402_isReadAdded.Designer.cs">
+      <DependentUpon>202503031315402_isReadAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503031446000_adminPassExtended.cs" />
+    <Compile Include="Migrations\202503031446000_adminPassExtended.Designer.cs">
+      <DependentUpon>202503031446000_adminPassExtended.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -162,6 +170,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502281742465_headingModelUpd.resx">
       <DependentUpon>202502281742465_headingModelUpd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503031315402_isReadAdded.resx">
+      <DependentUpon>202503031315402_isReadAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503031446000_adminPassExtended.resx">
+      <DependentUpon>202503031446000_adminPassExtended.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

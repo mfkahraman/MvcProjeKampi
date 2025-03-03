@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,8 @@ namespace MvcProjeKampi.Roles
 {
     public class AdminRoleProvider : RoleProvider
     {
+        AdminManager adminManager = new AdminManager(new EfAdminDal());
+
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -38,9 +42,8 @@ namespace MvcProjeKampi.Roles
 
         public override string[] GetRolesForUser(string username)
         {
-           Context context = new Context();
-            var x = context.Admins.FirstOrDefault(y => y.AdminUserName == username);
-            return new string[] { x.AdminRole };
+            string[] adminRoles = adminManager.GetList().Where(x => x.AdminUserName == username).Select(y => y.AdminRole).ToArray();
+            return adminRoles;
         }
 
         public override string[] GetUsersInRole(string roleName)

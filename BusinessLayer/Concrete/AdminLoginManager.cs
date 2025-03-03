@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class WriterLoginManager : IWriterLoginService
+    public class AdminLoginManager : IAdminLoginService
     {
-        IWriterDal _writerDal;
+        private readonly IAdminDal _adminDal;
 
-        public WriterLoginManager(IWriterDal writerDal)
+        public AdminLoginManager(IAdminDal adminDal)
         {
-            _writerDal = writerDal;
+            _adminDal = adminDal;
         }
 
-        public Writer GetWriter(string mailAdress, string password)
+        public Admin GetAdmin(string adminUserName, string password)
         {
             string hashedPassword = PasswordHelper.HashPassword(password);
-            return _writerDal.Get(x => x.WriterMail == mailAdress && x.WriterPassword == hashedPassword);
+            return _adminDal.Get(x => x.AdminUserName == adminUserName && x.AdminPassword == hashedPassword);
         }
     }
 }

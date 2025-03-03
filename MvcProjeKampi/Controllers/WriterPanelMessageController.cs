@@ -21,14 +21,14 @@ namespace MvcProjeKampi.Controllers
         public ActionResult Inbox()
         {
             string writerMail = (string)Session["WriterMail"];
-            var messageList = messageManager.GetListInbox(writerMail);
+            var messageList = messageManager.GetListInbox(writerMail).Where(x=> x.Status==true);
             return View(messageList);
         }
 
         public ActionResult Sendbox()
         {
             string writerMail = (string)Session["WriterMail"];
-            var messageList = messageManager.GetListSendBox(writerMail);
+            var messageList = messageManager.GetListSendBox(writerMail).Where(x => x.Status == true);
             return View(messageList);
         }
 
@@ -70,6 +70,11 @@ namespace MvcProjeKampi.Controllers
 
         public PartialViewResult MessageListMenu()
         {
+            var writerMail = (string)Session["WriterMail"];
+            ViewBag.InboxReadCount = messageManager.GetListInbox(writerMail).Where(x=> x.Status==true && x.IsRead ==true).Count();
+            ViewBag.InboxUnreadCount = messageManager.GetListInbox(writerMail).Where(x => x.Status == true && x.IsRead == false).Count();
+            ViewBag.SendboxReadCount = messageManager.GetListSendBox(writerMail).Where(x => x.Status == true && x.IsRead == true).Count();
+            ViewBag.SendboxUnreadCount = messageManager.GetListSendBox(writerMail).Where(x => x.Status == true && x.IsRead == false).Count();
             return PartialView();
         }
     }

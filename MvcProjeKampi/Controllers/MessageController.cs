@@ -20,15 +20,15 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult Inbox()
         {
-            string writerMail = (string)Session["WriterMail"];
-            var messageList = messageManager.GetListInbox(writerMail);
+            string adminMail = (string)Session["AdminUserName"];
+            var messageList = messageManager.GetListInbox(adminMail).Where(x => x.Status == true);
             return View(messageList);
         }
 
         public ActionResult Sendbox()
         {
-            string writerMail = (string)Session["WriterMail"];
-            var messageList = messageManager.GetListSendBox(writerMail);
+            string adminMail = (string)Session["AdminUserName"];
+            var messageList = messageManager.GetListSendBox(adminMail).Where(x => x.Status == true); ;
             return View(messageList);
         }
 

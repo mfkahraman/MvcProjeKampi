@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
+    [AllowAnonymous]
     public class AuthorizationController : Controller
     {
         AdminManager adminManager = new AdminManager(new EfAdminDal());
