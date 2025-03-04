@@ -5,6 +5,8 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -16,6 +18,7 @@ namespace MvcProjeKampi.Controllers
     {
         WriterLoginManager writerLoginManager = new WriterLoginManager(new EfWriterDal());
         AdminLoginManager adminLoginManager = new AdminLoginManager(new EfAdminDal());
+        string secretKey = "6LecCukqAAAAAORFhXHhXN8B8fqvwcmNT0m_-v_H";
 
         // Admin Login
         [HttpGet]
@@ -25,10 +28,20 @@ namespace MvcProjeKampi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Admin admin)
+        public async Task<ActionResult> Index(Admin admin, string recaptchaResponse)
         {
-            var adminUserInfo = adminLoginManager.GetAdmin(admin.AdminUserName, admin.AdminPassword);
+            var client = new HttpClient();
+            var response = await client.PostAsync($"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={recaptchaResponse}", null);
+            var jsonResult = await response.Content.ReadAsStringAsync();
+            dynamic result = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonResult);
 
+            if (result.success != "true" || result.score < 0.5)
+            {
+                ViewBag.Message = "reCAPTCHA doğrulaması başarısız.";
+                return View();
+            }
+
+            var adminUserInfo = adminLoginManager.GetAdmin(admin.AdminUserName, admin.AdminPassword);
             if (adminUserInfo != null)
             {
                 FormsAuthentication.SetAuthCookie(adminUserInfo.AdminUserName, false);
@@ -37,9 +50,11 @@ namespace MvcProjeKampi.Controllers
             }
             else
             {
-                return RedirectToAction("Index");
+                ViewBag.Message = "Geçersiz kullanıcı adı veya şifre.";
+                return View();
             }
         }
+
 
         [HttpGet]
         public ActionResult WriterLogin()
@@ -48,8 +63,19 @@ namespace MvcProjeKampi.Controllers
         }
 
         [HttpPost]
-        public ActionResult WriterLogin(Writer writer)
+        public async Task<ActionResult> WriterLogin(Writer writer, string recaptchaResponse)
         {
+            var client = new HttpClient();
+            var response = await client.PostAsync($"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={recaptchaResponse}", null);
+            var jsonResult = await response.Content.ReadAsStringAsync();
+            dynamic result = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonResult);
+
+            if (result.success != "true" || result.score < 0.5)
+            {
+                ViewBag.Message = "reCAPTCHA doğrulaması başarısız.";
+                return View();
+            }
+
             var writerUserInfo = writerLoginManager.GetWriter(writer.WriterMail, writer.WriterPassword);
             if (writerUserInfo != null)
             {
