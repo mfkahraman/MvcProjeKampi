@@ -22,8 +22,38 @@ namespace MvcProjeKampi.Controllers
 
         public ActionResult Headings()
         {
-            var headingList = headingManager.GetList();
+            var headingList = headingManager.GetList().Where(x => x.Status == true);
             return View(headingList);
         }
+
+        public ActionResult Calendar(int month = 0, int year = 0)
+        {
+            if (month == 0)
+            {
+                month = DateTime.Now.Month;
+            }
+
+            if (year == 0)
+            {
+                year = DateTime.Now.Year;
+            }
+
+            // Önceki ve sonraki aylar
+            var prevMonth = new DateTime(year, month, 1).AddMonths(-1);
+            var nextMonth = new DateTime(year, month, 1).AddMonths(1);
+
+            // Takvimi güncel ay ve yıl ile al
+            var headingList = headingManager.GetList().Where(x => x.Status == true && x.HeadingDate.Month == month && x.HeadingDate.Year == year);
+
+            ViewBag.CurrentMonth = month;
+            ViewBag.CurrentYear = year;
+            ViewBag.PrevMonth = prevMonth;
+            ViewBag.NextMonth = nextMonth;
+
+            return View(headingList);
+        }
+
+
+
     }
 }

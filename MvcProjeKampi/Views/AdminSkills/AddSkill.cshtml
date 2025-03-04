@@ -1,0 +1,25 @@
+﻿@model EntityLayer.Concrete.MySkill
+
+@{
+    ViewBag.Title = "Yetenek Ekleme Sayfası";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@ViewBag.Title</h1>
+<br />
+
+@using (Html.BeginForm("AddSkill", "AdminSkills", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Skill Adı")
+        @Html.TextBoxFor(x => x.SkillName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.SkillName)
+        <br />
+        @Html.Label("Skill Yüzdesi")
+        @Html.TextBoxFor(x => x.Percentage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Percentage)
+        <br />
+        <button class="btn btn-info">Ekle</button>
+    </div>
+}
+

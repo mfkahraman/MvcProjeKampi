@@ -1,0 +1,141 @@
+﻿@model List<EntityLayer.Concrete.MySkill>
+
+@{
+    ViewBag.Title = "Skills";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container pt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <!-- Profil ve Açıklama -->
+            <div class="d-flex align-items-center mb-4">
+                <div class="profile-img-container me-4">
+                    <img src="~/wwwroot/images/1.jpg" class="rounded-circle" alt="Profile Picture">
+                </div>
+
+                <div class="profile-description">
+                    <h4>Merhaba! Ben Furkan Kahraman</h4>
+                    <p class="text-muted">
+                        Yazılım Geliştiriciyim. Yeni teknolojileri öğrenmeyi ve uygulamayı seviyorum. Kendimi sürekli geliştirmeye çalışıyorum ve her zaman daha iyisini yapmaya çalışıyorum.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Skills List -->
+            <div class="skills mt-4">
+                <h4 class="mb-3">Programlama Yeteneklerim</h4>
+
+                @foreach (var item in Model)
+                {
+                    <div class="skill mb-3 d-flex align-items-center">
+                        <!-- Yetenek İsmi ve Progress Bar -->
+                        <div class="flex-grow-1">
+                            <h5 class="skill-title">@item.SkillName</h5>
+                            <div class="progress rounded-pill">
+                                <div class="progress-bar" role="progressbar" style="width: @item.Percentage%;"
+                                     aria-valuenow="@item.Percentage" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="progress-text">@item.Percentage%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Güncelle ve Sil Butonları -->
+                        <div class="button-group ms-2">
+                            <a href="/AdminSkills/UpdateSkill/@item.Id" class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i> Güncelle
+                            </a>
+                            <a href="/AdminSkills/DeleteSkill/@item.Id"
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Bu yeteneği silmek istediğinizden emin misiniz?');">
+                                <i class="fas fa-trash-alt"></i> Sil
+                            </a>
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Yeni Yetenek Ekle Butonu En Alta Taşındı -->
+            <div class="text-start mt-4">
+                <a href="/AdminSkills/AddSkill" class="btn btn-success w-100">
+                    <i class="fas fa-plus"></i> Yeni Yetenek Ekle
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS -->
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Profil Resmi */
+    .profile-img-container {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #007bff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    /* Profil Açıklaması */
+    .profile-description {
+        max-width: 500px;
+        padding-left: 10px;
+    }
+
+        .profile-description h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .profile-description p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+    /* Yetenek Bölümü */
+    .skills {
+        width: 100%;
+    }
+
+    .skill-title {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .progress {
+        height: 20px;
+        background-color: #e0e0e0;
+    }
+
+    .progress-bar {
+        background: linear-gradient(to right, #4caf50, #8bc34a);
+        line-height: 20px;
+        color: white;
+        text-align: center;
+        font-size: 0.85rem;
+    }
+
+    /* Buton Grubu */
+    .button-group a {
+        font-size: 0.85rem;
+    }
+
+    /* Yeni Yetenek Ekle Butonu */
+    .btn-success {
+        font-size: 1rem;
+        padding: 10px;
+    }
+</style>

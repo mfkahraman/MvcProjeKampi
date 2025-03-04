@@ -138,6 +138,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminCategoryController.cs" />
+    <Compile Include="Controllers\AdminSkillsController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -2065,6 +2066,7 @@
     <Content Include="wwwroot\HomeTheme\webfonts\fa-brands-400.svg" />
     <Content Include="wwwroot\HomeTheme\webfonts\fa-regular-400.svg" />
     <Content Include="wwwroot\HomeTheme\webfonts\fa-solid-900.svg" />
+    <Content Include="wwwroot\Images\1.jpg" />
     <Content Include="wwwroot\login-form-19\css\bootstrap.min.css" />
     <Content Include="wwwroot\login-form-19\css\bootstrap\mixins\_border-radius.css" />
     <Content Include="wwwroot\login-form-19\css\bootstrap\mixins\_screen-reader.css" />
@@ -2629,11 +2631,14 @@
     <Content Include="Views\Authorization\Index.cshtml" />
     <Content Include="Views\Authorization\AddAdmin.cshtml" />
     <Content Include="Views\Authorization\UpdateAdmin.cshtml" />
+    <Content Include="Views\AdminSkills\Index.cshtml" />
+    <Content Include="Views\AdminSkills\AddSkill.cshtml" />
+    <Content Include="Views\AdminSkills\UpdateSkill.cshtml" />
+    <Content Include="Views\Default\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
