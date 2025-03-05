@@ -1,21 +1,21 @@
 # Dictionary Website Project - ASP.NET MVC
 
-## 🌐 Main Features
-- Authors can create topics and add entries.
-- Author Panel allows authors to manage their profiles, view, edit, and add new topics and entries.
-- Admin Panel provides complete control over the site’s content and features:
-  - Manage reports, view contact page messages, and handle communication with authors.
-  - View and edit skills cards, topics, authors, and posts.
+## 🌟 Project Overview
+- **Author Panel:** Authors can create topics and entries, and manage their profiles.
+- **Admin Panel:** Full control over content and features, including managing reports, contact page messages, skills cards, topics, authors, and posts.
+- **Calendar Page:** View entries created on specific days.
+- **Showcase Page:** Displays general project information and statistics.
+- **Skills Cards Page:** Displays my programming skills, dynamically fetched from the database. Admins can edit and update these cards.
 
 ## 🔒 Roles & Permissions
-- Admin A has full control over the website.
-- Admin B has limited permissions.
-- Authentication & Authorization are applied to ensure security and role-based access.
+- **Admin A:** Full control.
+- **Admin B:** Limited permissions.
+- **Security:** Role-based access control with authentication and authorization.
 
-## 🔧 Additional Features
-- **Custom Error Pages:** Personalized error pages to enhance user experience.
-- **Showcase Page:** Provides general information about the project.
-- **FluentValidation:** Added to ensure accurate data validation throughout the project.
+## 🔧 Key Features
+- **Custom Error Pages:** Enhance user experience.
+- **Showcase Page:** General project details and insights.
+- **FluentValidation:** Ensures data validation.
 
 ## 🛠️ Technologies & Techniques Used
 - 💻 **ASP.NET Framework**
@@ -23,11 +23,12 @@
 - 🧩 **N-Tier Architecture**
 - 📄 **Code First with Entity Framework**
 - 📑 **PagedList for Pagination**
-- 🔒 **Authentication & Authorization (Role-Based Access Control)**
+- 🔒 **Authentication & Authorization**
 - 💬 **Session Management**
 - 🎨 **HTML, CSS, Bootstrap, JavaScript**
-- ✅ **FluentValidation for Validation**
+- ✅ **FluentValidation**
 - 🚨 **Custom Error Pages**
+
 ![1_Admin_Basliklar](https://github.com/user-attachments/assets/e40a2960-4ada-4c26-90d5-eaea6a86fd58)
 
 ![2_Admin_Yazarlar](https://github.com/user-attachments/assets/f0cfcbfe-7c99-4371-8b39-5dc8b1e66a0e)
