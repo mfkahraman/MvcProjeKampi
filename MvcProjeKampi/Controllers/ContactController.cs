@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
-    [Authorize(Roles = "B")]
+    [Authorize(Roles = "A")]
     public class ContactController : Controller
     {
         ContactManager cm = new ContactManager(new EfContactDal());

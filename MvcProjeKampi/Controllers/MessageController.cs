@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
+    [Authorize(Roles = "A")]
     public class MessageController : Controller
     {
         MessageManager messageManager = new MessageManager(new EfMessageDal());

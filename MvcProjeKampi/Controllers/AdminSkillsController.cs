@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "A")]
     public class AdminSkillsController : Controller
     {
         MySkillManager skillManager = new MySkillManager(new EfMySkillDal());

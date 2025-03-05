@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -21,16 +20,6 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
@@ -52,7 +41,7 @@ to get the desired effect
                         <img src="~/wwwroot/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Yazar Ad Soyad</a>
+                        <a href="#" class="d-block">Yazar</a>
                     </div>
                 </div>
 
@@ -60,10 +49,10 @@ to get the desired effect
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview">
                             <a href="/WriterPanel/WriterProfile/" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Profilim
                                 </p>
@@ -71,7 +60,7 @@ to get the desired effect
                         </li>
                         <li class="nav-item">
                             <a href="/WriterPanel/MyHeading/" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
+                                <i class="nav-icon fas fa-heading"></i>
                                 <p>
                                     Başlıklarım
                                 </p>
@@ -79,7 +68,7 @@ to get the desired effect
                         </li>
                         <li class="nav-item">
                             <a href="/WriterPanel/AllHeading/" class="nav-link">
-                                <i class="nav-icon fas fa-list-alt"></i>
+                                <i class="nav-icon fas fa-list"></i>
                                 <p>
                                     Tüm Başlıklar
                                 </p>
@@ -87,7 +76,7 @@ to get the desired effect
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="/WriterPanelMessage/Inbox/" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
+                                <i class="nav-icon fas fa-envelope"></i>
                                 <p>
                                     Mesajlar
                                 </p>
@@ -95,15 +84,23 @@ to get the desired effect
                         </li>
                         <li class="nav-item">
                             <a href="/WriterPanelContent/MyContent/" class="nav-link">
-                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <i class="nav-icon fas fa-pen"></i>
                                 <p>
                                     Yazılarım
+                                </p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="/Default/Calendar/" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>
+                                    Takvim
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="/Default/Headings/" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
+                                <i class="nav-icon fas fa-globe"></i>
                                 <p>
                                     Siteye Git
                                 </p>
@@ -111,7 +108,7 @@ to get the desired effect
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="/Login/Logout/" class="nav-link">
-                                <i class="nav-icon fas fa-door-closed"></i>
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>
                                     Çıkış Yap
                                 </p>

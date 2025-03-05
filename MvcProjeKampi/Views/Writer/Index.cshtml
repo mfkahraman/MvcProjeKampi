@@ -1,7 +1,7 @@
-﻿@model List<EntityLayer.Concrete.Writer>
+﻿@model IEnumerable<EntityLayer.Concrete.Writer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Yazar Listesi";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -14,10 +14,18 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Yazarlar Listesi</h1>
+                    <h1>@ViewBag.Title</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
     </section>
 
     <!-- Main content -->
@@ -44,17 +52,21 @@
                                             </ul>
                                         </div>
                                         <div class="col-5 text-center">
-                                            <img src="~/wwwroot/AdminLTE-3.0.4/dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+                                            <img src="@item.WriterImage" alt="" class="img-circle img-fluid">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
+                                        <a href="/WriterPanelContent/MyContent" class="btn btn-sm btn-primary">
                                             <i class="fas fa-comments">Yazarın Başlıkları</i>
                                         </a>
-                                        <a href="/Writer/EditWriter/@item.WriterId" class="btn btn-sm btn-primary">
+                                        <a href="/Writer/EditWriter/@item.WriterId" class="btn btn-sm btn-warning">
                                             <i class="fas fa-user"></i> Profili Düzenle
+                                        </a>
+                                        <a href="/Writer/DeactivateWriter/@item.WriterId" class="btn btn-sm btn-danger" 
+                                           onclick="return confirm('Emin misiniz?'")>
+                                            <i class="fas fa-user"></i> Pasife Çek
                                         </a>
                                     </div>
                                 </div>

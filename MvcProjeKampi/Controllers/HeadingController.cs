@@ -17,7 +17,7 @@ namespace MvcProjeKampi.Controllers
         WriterManager wm = new WriterManager(new EfWriterDal());
         public ActionResult Index(int page = 1)
         {
-            var values = hm.GetList().Where(x => x.Status == true).ToPagedList(page,5);
+            var values = hm.GetList().ToPagedList(page,5);
             return View(values);
         }
 

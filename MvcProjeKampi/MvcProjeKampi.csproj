@@ -2067,6 +2067,10 @@
     <Content Include="wwwroot\HomeTheme\webfonts\fa-regular-400.svg" />
     <Content Include="wwwroot\HomeTheme\webfonts\fa-solid-900.svg" />
     <Content Include="wwwroot\Images\1.jpg" />
+    <Content Include="wwwroot\Images\writers\02d7d309-69fc-4b05-a96b-7a6c7d43c5a8.png" />
+    <Content Include="wwwroot\Images\writers\302d1d70-c9eb-4a48-b9f1-664df7052797.png" />
+    <Content Include="wwwroot\Images\writers\c539415b-fcca-40b1-811a-78014a75341d.png" />
+    <Content Include="wwwroot\Images\writers\fd7cffbd-f000-4be3-b3b5-fccefa81ced2.png" />
     <Content Include="wwwroot\login-form-19\css\bootstrap.min.css" />
     <Content Include="wwwroot\login-form-19\css\bootstrap\mixins\_border-radius.css" />
     <Content Include="wwwroot\login-form-19\css\bootstrap\mixins\_screen-reader.css" />
