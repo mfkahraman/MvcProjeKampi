@@ -29,6 +29,14 @@
 - ✅ **FluentValidation**
 - 🚨 **Custom Error Pages**
 
+![12_Home_Banner](https://github.com/user-attachments/assets/74886b07-dfe7-4feb-9de8-efb21fa5f061)
+
+![13_Home_Proje](https://github.com/user-attachments/assets/abd0b4ae-fd9d-4ca4-9808-5230d8084826)
+
+![14_Home_Statistics](https://github.com/user-attachments/assets/1c82f9e5-b6eb-40be-93aa-19afe065bbae)
+
+![15_Default](https://github.com/user-attachments/assets/cdd7b60a-88a2-4e43-a0da-01793e83940b)
+
 ![1_Admin_Basliklar](https://github.com/user-attachments/assets/e40a2960-4ada-4c26-90d5-eaea6a86fd58)
 
 ![2_Admin_Yazarlar](https://github.com/user-attachments/assets/f0cfcbfe-7c99-4371-8b39-5dc8b1e66a0e)
@@ -50,11 +58,3 @@
 ![10_Writer_Mesajlar](https://github.com/user-attachments/assets/6b5739d8-5b69-4eed-9177-bb3f00901840)
 
 ![11_Writer_Content](https://github.com/user-attachments/assets/469ee4e7-8eb5-478b-8883-ea5ccc725db7)
-
-![15_Default](https://github.com/user-attachments/assets/cdd7b60a-88a2-4e43-a0da-01793e83940b)
-
-![12_Home_Banner](https://github.com/user-attachments/assets/74886b07-dfe7-4feb-9de8-efb21fa5f061)
-
-![13_Home_Proje](https://github.com/user-attachments/assets/abd0b4ae-fd9d-4ca4-9808-5230d8084826)
-
-![14_Home_Statistics](https://github.com/user-attachments/assets/1c82f9e5-b6eb-40be-93aa-19afe065bbae)
