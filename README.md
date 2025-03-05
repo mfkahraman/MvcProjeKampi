@@ -11,6 +11,7 @@
 - **Admin A:** Full control.
 - **Admin B:** Limited permissions.
 - **Security:** Role-based access control with authentication and authorization.
+- **Google reCAPTCHA v3:** Used for Admin and Author login processes to enhance security and prevent automated bot attacks.
 
 ## 🔧 Key Features
 - **Custom Error Pages:** Enhance user experience.
